@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四章 软件项目范围计划 - 需求管理 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第四章 软件项目范围计划 - 需求管理 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 需求管理包括（<input type="text" class="fill-blank-input" id="fb1-1">）、（<input type="text" class="fill-blank-input" id="fb1-2">）、（<input type="text" class="fill-blank-input" id="fb1-3">）、（<input type="text" class="fill-blank-input" id="fb1-4">）、（<input type="text" class="fill-blank-input" id="fb1-5">）5 个过程。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['需求获取', '需求分析', '需求规格编写', '需求验证', '需求变更'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. （<input type="text" class="fill-blank-input" id="fb2-1">）是其中一种需求建模方法。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['原型分析方法'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 需求规格说明可以包括系统的运行环境。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 结构化分析方法是一种自下而上逐步求精的分析方法。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '对')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 需求分析工作完成的一个基本标志是形成了一份完整的、规范的需求规格说明书。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 需求是指用户对软件的功能和性能的要求，就是用户希望软件能做什么事，完成什么样的功能，达到什么性能。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 用例分析方法采用一种面向过程的情景分析方法。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '错')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 软件项目系统的响应时间属于功能性需求。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 数据字典是由数据项、数据流以及操作指令组成的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '错')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 下列不属于软件项目管理需求过程的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 需求获取</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 需求分析</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 需求规格编写</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 需求更新</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'D')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 下列不属于数据字典组成部分的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 数据项</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 数据流</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 数据文件</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 数据库</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'D')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 下列不属于 UML 需求视图的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 甘特图</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 用例图</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 状态图</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 顺序图</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'A')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 下列不是需求建模方法的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 原型方法</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 结构化设计方法</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 面向对象的用例分析方法</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 功能列表方法</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'B')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. （）是软件项目的一个突出特点，可以导致软件项目的蔓延。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 需求变更</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 暂时性</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 阶段性</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 约束性</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'A')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 下列不属于结构化方法设计的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 数据流图</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 数据字典</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 系统流程图</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 系统用例图</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'D')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. 下列不属于软件需求范畴的是？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 软件项目采用什么样的实现技术</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 用户需要软件做什么样的事情</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 用户需要软件完成什么样的功能</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 用户需要软件达到什么样的性能</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'A')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>
