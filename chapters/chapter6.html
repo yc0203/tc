@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六章 项目成本计划 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第六章 项目成本计划 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 软件项目成本包括直接成本和间接成本，一般而言，项目人力成本归属于（<input type="text" class="fill-blank-input" id="fb1-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['直接成本'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 在项目初期，一般采用的成本估算方法是（<input type="text" class="fill-blank-input" id="fb2-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['类比估算法'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 功能点方法中 5 类功能组件的计数项是（<input type="text" class="fill-blank-input" id="fb3-1">）、（<input type="text" class="fill-blank-input" id="fb3-2">）、（<input type="text" class="fill-blank-input" id="fb3-3">）、（<input type="text" class="fill-blank-input" id="fb3-4">）、（<input type="text" class="fill-blank-input" id="fb3-5">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['外部输入', '外部输出', '外部查询', '内部逻辑文件', '外部接口文件'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. 软件项目的主要成本是（<input type="text" class="fill-blank-input" id="fb4-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['人的劳动的消耗所需要的代价'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. 用例点方法通过分析用例角色、场景和（<input type="text" class="fill-blank-input" id="fb5-1">）等来进行软件估算。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['技术与环境因子'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 软件项目规模就是软件项目工作量。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 在软件项目估算中，估算结果是没有误差的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '错')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 人的劳动消耗所付出的代价是软件产品的主要成本。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '对')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 功能点估算与项目所使用的语言和技术有关。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '错')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. COCOMO81 有 3 个等级的模型：有机型、嵌入型、半嵌入型。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '错')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 经验对于估算来说不重要。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 估算时既要考虑直接成本又要考虑间接成本。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '对')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. 在进行软件估算的时候，可以直接考虑参照其他企业的模型进行项目估算。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '错')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+
+            <div class="question" id="tf9">
+                <div class="question-text">9. 间接成本是与一个具体项目相关的成本。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf9" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf9" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(9, '错')">检查答案</button>
+                <div class="result" id="result-tf9"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 下面关于估算的说法，错误的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 估算是有误差的</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 估算时不要太迷信数学模型</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 经验对于估算来说不重要</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 历史数据对于估算来说非常重要</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'C')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. （）是成本的主要因素，是成本估算的基础。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 计划</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 规模</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 风险</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 利润</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 常见的成本估算方法不包括（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 代码行</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 功能点</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 类比法</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 关键路径法</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'D')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 下列不是 UFC 的功能计数项是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 外部输出</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 外部文件</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 内部输出</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 内部文件</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'C')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 成本预算的目的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 生产成本基线</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 编写报告书</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 指导设计过程</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 方便进度管理</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'A')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 估算的基本方法不包括（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 代码行</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 功能点</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 专家估算</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 函数估算法</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'D')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. 在项目初期，进行竞标合同时，一般采用的成本估算方法是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 参数估算法</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 类比估算法</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 专家估算法</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 功能点估算法</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'B')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+
+            <div class="question" id="mc8">
+                <div class="question-text">8. 下列不是软件项目规模单位的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc8" value="A"> A. 源代码长度（LOC）</label>
+                    <label class="option"><input type="radio" name="mc8" value="B"> B. 功能点（FP）</label>
+                    <label class="option"><input type="radio" name="mc8" value="C"> C. 人天、人月、人年</label>
+                    <label class="option"><input type="radio" name="mc8" value="D"> D. 小时</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(8, 'D')">检查答案</button>
+                <div class="result" id="result-mc8"></div>
+            </div>
+
+            <div class="question" id="mc9">
+                <div class="question-text">9. 在成本管理过程中，每个时间段中各个工作单元的成本是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc9" value="A"> A. 估算</label>
+                    <label class="option"><input type="radio" name="mc9" value="B"> B. 预算</label>
+                    <label class="option"><input type="radio" name="mc9" value="C"> C. 直接成本</label>
+                    <label class="option"><input type="radio" name="mc9" value="D"> D. 间接成本</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(9, 'B')">检查答案</button>
+                <div class="result" id="result-mc9"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>

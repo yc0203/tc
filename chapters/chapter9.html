@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第九章 软件配置管理计划 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第九章 软件配置管理计划 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 配置管理最终保证软件产品的（<input type="text" class="fill-blank-input" id="fb1-1">）、（<input type="text" class="fill-blank-input" id="fb1-2">）、（<input type="text" class="fill-blank-input" id="fb1-3">）、（<input type="text" class="fill-blank-input" id="fb1-4">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['完整性', '一致性', '追溯性', '可控性'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. （<input type="text" class="fill-blank-input" id="fb2-1">）是软件配置管理的核心功能。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['完整性和可跟踪性'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. （<input type="text" class="fill-blank-input" id="fb3-1">）标志开发过程中一个阶段的结束和里程碑。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['基线'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. 基线变更控制包括（<input type="text" class="fill-blank-input" id="fb4-1">）、（<input type="text" class="fill-blank-input" id="fb4-2">）、（<input type="text" class="fill-blank-input" id="fb4-3">）、（<input type="text" class="fill-blank-input" id="fb4-4">）等步骤。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['变更请求', '变更控制', '变更批准/拒绝', '变更实现'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. （<input type="text" class="fill-blank-input" id="fb5-1">）、（<input type="text" class="fill-blank-input" id="fb5-2">）是配置管理的主要功能。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['版本管理', '变更管理'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+
+            <div class="question" id="fb6">
+                <div class="question-text">6. 基线变更时，需要经过（<input type="text" class="fill-blank-input" id="fb6-1">）授权。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(6, ['SCCB'])">检查答案</button>
+                <div class="result" id="result-fb6"></div>
+            </div>
+
+            <div class="question" id="fb7">
+                <div class="question-text">7. SCCB 的全称是（<input type="text" class="fill-blank-input" id="fb7-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(7, ['软件配置控制委员会'])">检查答案</button>
+                <div class="result" id="result-fb7"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 一个软件配置项可能有多个标识。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '错')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 在软件项目配置管理中最终应保证软件产品的完整性、一致性、有效性、机密性。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '错')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 基线提供了软件开发阶段的一个特定点。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 有效的项目管理能够控制变化，以最有效的手段应对变化，不断命中移动的目标。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 一个（些）配置项形成并通过审核，即形成基线。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 软件配置项是项目需定义其受控于软件配置管理的款项，每个项目的配置项是相同的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 基线的修改不需要每次都按照正式的程序执行。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '错')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. 基线产品是不能修改的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '错')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+
+            <div class="question" id="tf9">
+                <div class="question-text">9. 基线修改应受到控制，但不一定要经 SCCB 授权。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf9" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf9" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(9, '错')">检查答案</button>
+                <div class="result" id="result-tf9"></div>
+            </div>
+
+            <div class="question" id="tf10">
+                <div class="question-text">10. 变更控制系统包括从项目变更申请、变更评估、变更审批到变更实施的文档化流程。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf10" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf10" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(10, '对')">检查答案</button>
+                <div class="result" id="result-tf10"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 下列不属于 SCCB 的职责的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 评估变更</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 与项目管理层沟通</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 对变更进行反馈</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 提出变更申请</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'D')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 为了更好地管理变更，需要定义项目基线，关于基线的描述，下列描述正确的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 不可变化</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 可以变化，但是必须通过基线变更控制流程处理</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 所有的项目必须定义基线</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 基线发生变更时，必须修改需求</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 软件配置管理无法确保以下哪种软件产品属性（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 正确性</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 完整性</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 一致性</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 可控性</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'A')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 变更控制需要关注的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 阻止变更</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 标识变更，提出变更，管理变更</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 管理 SCCB</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 客户的想法</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'B')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 以下哪项不是项目配置管理中可能遇到的问题？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 找不到某个文件的历史版本</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 甲方与乙方在资金调配中存在意见差异</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 开发人员未经授权修改代码或文档</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 因协同开发中，或者异地开发，版本变更混乱导致整个项目失败</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'B')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>

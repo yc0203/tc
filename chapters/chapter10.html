@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十章 软件项目人员与沟通计划 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+        .formula {
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第十章 软件项目人员与沟通计划 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 沟通管理的基本原则是（<input type="text" class="fill-blank-input" id="fb1-1">）、（<input type="text" class="fill-blank-input" id="fb1-2">）、（<input type="text" class="fill-blank-input" id="fb1-3">）、（<input type="text" class="fill-blank-input" id="fb1-4">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['及时性', '准确性', '完整性', '可理解性'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 可以充分发挥部门资源优势集中的组织结构为（<input type="text" class="fill-blank-input" id="fb2-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['职能型组织结构'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 沟通计划用于确定需要信息，需要什么信息，何时需要信息，以及（<input type="text" class="fill-blank-input" id="fb3-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['如何将信息分发给他们'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. 组织结构的主要类型有（<input type="text" class="fill-blank-input" id="fb4-1">）、（<input type="text" class="fill-blank-input" id="fb4-2">）、（<input type="text" class="fill-blank-input" id="fb4-3">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['职能型', '项目型', '矩阵型'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. （<input type="text" class="fill-blank-input" id="fb5-1">）最有可能协助解决复杂的问题。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['会议形式'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+
+            <div class="question" id="fb6">
+                <div class="question-text">6. 当项目中有20个人时，沟通渠道最多有（<input type="text" class="fill-blank-input" id="fb6-1">）。</div>
+                <div class="formula">计算方式：n(n - 1)/2，n = 20</div>
+                <button class="btn check-btn" onclick="checkFillBlank(6, ['190'])">检查答案</button>
+                <div class="result" id="result-fb6"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 项目干系人是项目计划的一部分。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 项目型的优点是可以资源共享。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '错')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 应尽量多建立一些沟通渠道。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 项目沟通的基本原则是及时性、准确性、完整性和可理解性。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 在IT项目中，成功的最大威胁是沟通的失败。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 责任分配矩阵是明确项目团队成员的角色与职责的有效工具。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '对')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 口头沟通不是项目沟通的方式。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '错')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. 对于紧急的信息，应该通过口头的方式沟通；对于重要的信息，应采用书面的方式沟通。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '对')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+
+            <div class="question" id="tf9">
+                <div class="question-text">9. 人员计划描述项目的团队人员组成，以及如何加入和离开团队。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf9" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf9" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(9, '对')">检查答案</button>
+                <div class="result" id="result-tf9"></div>
+            </div>
+
+            <div class="question" id="tf10">
+                <div class="question-text">10. 沟通计划包括确定谁需要信息，需要什么信息，何时需要信息，以及如何接收信息等。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf10" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf10" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(10, '对')">检查答案</button>
+                <div class="result" id="result-tf10"></div>
+            </div>
+
+            <div class="question" id="tf11">
+                <div class="question-text">11. 人员管理计划没有明确的具体体现形式，作为项目计划的一部分，其详细程度因项目而异。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf11" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf11" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(11, '对')">检查答案</button>
+                <div class="result" id="result-tf11"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 在项目管理的3种组织结构中，适用于主要由一个部门完成的项目或技术比较成熟的项目组织结构是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 矩阵型组织结构</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 项目型组织结构</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 职能型组织结构</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 都一样</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'C')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 项目经理花在沟通上的时间是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 20%-40%</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 75%-90%</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 60%</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 30%-60%</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 在（）组织结构中，项目成员没有安全感</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 职能型</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 矩阵型</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 项目型</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 弱矩阵型</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'C')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 下列关于干系人的描述中，不正确的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 影响项目决策的个人、群体或者组织</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 影响项目活动的个人、群体或者组织</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 影响项目结果的个人、群体或者组织</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 所有项目人员</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'D')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 编制沟通计划的基础是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 沟通需求分析</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 项目范围说明书</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 项目管理计划</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 历史资料</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'A')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 在3种组织结构中，（）组织结构是目前最普遍的项目组织形式，它是一个标准的金字塔型组织形式</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 矩阵型</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 项目型</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 职能型</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 都一样</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'C')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. 项目团队原来有4个成员，现在人员扩充，又增加了4个成员，这样沟通渠道增加了（）</div>
+                <div class="formula">原4人时沟通渠道数：4×3÷2 = 6，增加到8人时：8×7÷2 = 28，28÷6≈4.67倍</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 7倍</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 两倍</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 4条</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 无法确定</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'A')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+
+            <div class="question" id="mc8">
+                <div class="question-text">8. 对于项目中比较重要的通知，最好采用（）沟通方式</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc8" value="A"> A. 口头</label>
+                    <label class="option"><input type="radio" name="mc8" value="B"> B. 书面</label>
+                    <label class="option"><input type="radio" name="mc8" value="C"> C. 网络方式</label>
+                    <label class="option"><input type="radio" name="mc8" value="D"> D. 电话</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(8, 'B')">检查答案</button>
+                <div class="result" id="result-mc8"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章 软件项目范围计划 - 任务分解 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all; /* 允许长单词换行 */
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第五章 软件项目范围计划 - 任务分解 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 任务分解是将一个项目分解为更多的（<input type="text" class="fill-blank-input" id="fb1-1">）或者（<input type="text" class="fill-blank-input" id="fb1-2">），是项目变得更小、更易管理、更易操作。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['工作细目', '子项目'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 一般来说，进行项目分解时，可以采用（<input type="text" class="fill-blank-input" id="fb2-1">）或（<input type="text" class="fill-blank-input" id="fb2-2">）两种形式来表达任务分解的结果。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['清单', '图表'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. WBS 的全称是（<input type="text" class="fill-blank-input" id="fb3-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['工作分解结构'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. WBS 最底层次可交付成果是（<input type="text" class="fill-blank-input" id="fb4-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['工作包'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. WBS 提供了项目范围基线。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 一个工作包可以分配给另一个项目经理去完成。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '对')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 如果开发人员对项目比较熟悉或者对项目大局有把握，开发 WBS 时最好采用自底向上方法。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 对于一个没有做过的项目，开发 WBS 时可以采用自底向上方法。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 在任务分解结果中，最底层的要素必须是实现项目目标的充分必要条件。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 任务分解是将一个项目分解为更多的工作细目或者子项目，是项目变得更小、更易管理和操作。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '对')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 一个工作包应当由唯一主体负责。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '对')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. WBS 的最高层次的可交付成果是工作包。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '错')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+
+            <div class="question" id="tf9">
+                <div class="question-text">9. 对任务的分解只能是自上而下的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf9" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf9" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(9, '错')">检查答案</button>
+                <div class="result" id="result-tf9"></div>
+            </div>
+
+            <div class="question" id="tf10">
+                <div class="question-text">10. WBS 的最底层任务是能分配到一个人完成的任务。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf10" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf10" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(10, '对')">检查答案</button>
+                <div class="result" id="result-tf10"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. WBS 非常重要，因为下列原因，除了（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 帮助组织工作</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 防止遗漏工作</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 为项目估算提供依据</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 确定团队成员责任</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'D')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. WBS 中的每一个具体细目通常都指定唯一的（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 编码</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 地点</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 功能模块</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 提交截至期限</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'A')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 下列不是创建 WBS 的方法的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 自顶向下</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 自底向上</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 控制方法</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 模板参照</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'C')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 任务分解时，（）方法从特殊到一般的方向进行，首先定义一些特殊的任务，然后将这些任务组织起来，形成更高级别的 WBS 层。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 模板参照</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 自顶向下</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 类比</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 自底向上</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'D')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 下列关于 WBS 的说法，不正确的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. WBS 是任务分解的结果</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 不包括在 WBS 中的任务就不是该项目的工作</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 可以采用清单或者图表的形式标示 WBS 的结果</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 如果项目是一个崭新的项目，最好用自顶向下方法开发 WBS</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'D')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 检验 WBS 分解结果的标准不包括以下那一项？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 最底层的要素是否是实现目标的充分必要条件</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 非叶节点是否包含两个以上的叶节点</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 最底层元素是否有重复</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 最底层要素是否有清晰完整定义</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'B')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. WBS 是对项目由粗到细的分解过程，它的结构是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 分层的集合结构</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 分级的树形结构</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 分层的线性结构</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 分级的图状结构</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'B')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+
+            <div class="question" id="mc8">
+                <div class="question-text">8. 任务分解时，（）方法从一般到特殊的方向进行，从项目的大局着手，然后逐步分解子细目，将项目变为更细、更完善的部分。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc8" value="A"> A. 模板参照</label>
+                    <label class="option"><input type="radio" name="mc8" value="B"> B. 自顶向下</label>
+                    <label class="option"><input type="radio" name="mc8" value="C"> C. 类比</label>
+                    <label class="option"><input type="radio" name="mc8" value="D"> D. 自底向上</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(8, 'B')">检查答案</button>
+                <div class="result" id="result-mc8"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十五章 项目核心计划执行控制 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+        .formula {
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第十五章 项目核心计划执行控制 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 当 \(SV = BCWP - BCWS < 0\) 时，表示项目（<input type="text" class="fill-blank-input" id="fb1-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['进度落后'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 代码评审由一组人对程序进行阅读、讨论和争议，它是（<input type="text" class="fill-blank-input" id="fb2-1">）过程。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['质量控制'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 一项任务正常进度是10周，成本是10万元，可以压缩到8周，成本变为12万元，那么压缩到9周时的成本是（<input type="text" class="fill-blank-input" id="fb3-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['11万元'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. 从质量控制图的控制上限和控制下线，可以知道可以接受的过程的（<input type="text" class="fill-blank-input" id="fb4-1">）范围。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['偏差'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. 范围控制的重点是避免需求的（<input type="text" class="fill-blank-input" id="fb5-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['变更'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+
+            <div class="question" id="fb6">
+                <div class="question-text">6. 一个任务原计划3个全职工作2周完成，而实际上只有2个人参与这个任务，到第二周末完成了任务的50%，则 \(CPI =\)（<input type="text" class="fill-blank-input" id="fb6-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(6, ['75%'])">检查答案</button>
+                <div class="result" id="result-fb6"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 记录反映当前项目状态的项目性能数据是控制项目的基础。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 项目进度成本控制的基本目标是在给定的限制条件下，用最短时间、最小成本、以最小风险完成项目工作。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '对')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 代码走查是在代码编写阶段，开发人员自己检查自己的代码。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '对')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 在使用应急法压缩进度时，不一定要在关键路径上选择活动来进行压缩。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '错')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 累计费用曲线中某时间点的 ACWP 比 BCWS 高，意味着在这个时间点为止，实际的成本要比计划的高，二者之间的差值就是成本差异。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. \(CPI = 0.90\) 说明目前的预期成本超出计划的90%。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 技术评审的目的是尽早发现工作成果中的缺陷，并帮助开发人员及时消除缺陷，从而有效提高产品质量。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '对')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. 软件测试的目的是证明软件没有错误。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '错')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 在一个项目会议上，一个成员提出增加任务的要求，而这个要求超出了 WBS 确定的项目基线，这时项目经理提出项目团队应该集中精力完成而且仅完成原来定义的范围基线，这是一个（）的例子。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 范围定义</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 范围管理</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 范围蔓延</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 范围变更请求</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'B')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 项目原来预计于2014.5.23完成1000元的工作，但到2014.5.23只完成850元工作，而为了这些工作花费900元，则成本偏差和进度偏差分别是（）</div>
+                <div class="formula">计算方式：<br>成本偏差 \(CV = BCWP - ACWP = 850 - 900 = -50\) 元<br>进度偏差 \(SV = BCWP - BCWS = 850 - 1000 = -150\) 元</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. \(CV = 50\)元，\(SV = -150\)元</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. \(CV = -50\)元，\(SV = -150\)元</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. \(CV = -50\)元，\(SV = 50\)元</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. \(CV = -50\)元，\(SV = -150\)元</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 如果成本效能指标 \(CPI = 90\%\)，它说明（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 目前项目成本超出90%</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 投入1元产生0.9元的效果</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 项目完成的时候，将超支90%</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 项目已经完成计划90%</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'B')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 进度控制重要的一个组成部分是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 确定进度偏差是否需要采取纠正措施</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 定义为项目的可交付成果所需要的活动</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 评估 WBS 定义是否足以支持进度计划</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 确保项目队伍的士气高昂</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'A')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 资源平衡最好用于（）活动。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 时间很紧的</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 按时的</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 非关键路径</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 关键路径</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'C')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 当项目进展到（）左右时，CPI 处于稳定。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 10%</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 20%</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 30%</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 40%</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'B')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. 抽样统计的方法中，（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 应该选择更多的样品</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 以小批量的抽样为基准进行检验</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 是判定大量成批量产品质量的唯一方法</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 导致更高的成本</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'B')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+
+            <div class="question" id="mc8">
+                <div class="question-text">8. 下面不是质量控制3个要点之一的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc8" value="A"> A. 确定人员分配是否合理</label>
+                    <label class="option"><input type="radio" name="mc8" value="B"> B. 检查项目结果</label>
+                    <label class="option"><input type="radio" name="mc8" value="C"> C. 依据相关质量标准进行跟踪检查</label>
+                    <label class="option"><input type="radio" name="mc8" value="D"> D. 确定消灭质量问题的措施</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(8, 'A')">检查答案</button>
+                <div class="result" id="result-mc8"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>

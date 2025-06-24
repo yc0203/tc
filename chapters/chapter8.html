@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第八章 软件项目质量计划 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第八章 软件项目质量计划 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. （<input type="text" class="fill-blank-input" id="fb1-1">）是对过程或产品的一次独立质量评估。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['审计'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 质量成本包括预防成本和（<input type="text" class="fill-blank-input" id="fb2-1">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['缺陷成本'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 质量管理包括（<input type="text" class="fill-blank-input" id="fb3-1">）、（<input type="text" class="fill-blank-input" id="fb3-2">）、（<input type="text" class="fill-blank-input" id="fb3-3">）等过程。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['软件质量计划', '软件质量保证', '软件质量控制'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. （<input type="text" class="fill-blank-input" id="fb4-1">）是软件满足明确说明或者隐含的需求的程度。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['软件质量'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. McCall 质量模型关注的 3 个方面是（<input type="text" class="fill-blank-input" id="fb5-1">）、（<input type="text" class="fill-blank-input" id="fb5-2">）、（<input type="text" class="fill-blank-input" id="fb5-3">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['产品运行', '产品转移', '产品修改'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+
+            <div class="question" id="fb6">
+                <div class="question-text">6. 质量管理总是围绕着质量保证和（<input type="text" class="fill-blank-input" id="fb6-1">）过程两个方面进行。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(6, ['质量控制'])">检查答案</button>
+                <div class="result" id="result-fb6"></div>
+            </div>
+
+            <div class="question" id="fb7">
+                <div class="question-text">7. 质量保证的主要活动是（<input type="text" class="fill-blank-input" id="fb7-1">）和（<input type="text" class="fill-blank-input" id="fb7-2">）。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(7, ['项目执行过程审计', '项目产品审计'])">检查答案</button>
+                <div class="result" id="result-fb7"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 质量是满足要求的程度，包括符合规定的要求和隐含的需求。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 软件质量是软件满足明确说明或者隐含的需求的程度。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '对')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 软件质量可以通过后期测试得以提高。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 质量计划可以确定质量保证人员的特殊汇报渠道。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 软件质量是代码正确的程度。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '错')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 下列不属于质量管理过程的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 质量计划</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 质量保证</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 质量控制</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 质量优化</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'D')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 项目质量管理的目标是满足（）的需要</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 老板</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 项目经理</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 项目</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 组织</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'C')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 下列属于质量成本的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 预防成本</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 缺陷数量</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 预测成本</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 缺失成本</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'A')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 下列不是质量计划方法的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 质量成本分析</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 因果分析图</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 抽样分析</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 基准对照</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'C')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 下列不是软件质量模型的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. Boehm 质量模型</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. McCall 质量模型</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. ISO/IEC9216 质量模型</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. Mark 质量模型</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'D')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 质量控制非常重要，但是进行质量控制也需要一定的成本，（）可以降低质量控制的成本。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 进行过程分析</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 使用抽样统计</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 对全程进行监督</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 进行质量审计</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'B')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. McCall 质量模型不包含（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 产品修改</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 产品转移</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 产品特点</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 产品运行</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'C')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
+</body>
+</html>
