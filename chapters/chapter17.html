@@ -1,10 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十七章 项目结束过程 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
 
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第十七章 项目结束过程 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 项目目标已经成功实现，可交付成果已经出现；或者项目无法继续进行，这时项目可以（<input type="text" class="fill-blank-input" id="fb1-1">）了。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['终止'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 项目结束过程包括制定结束计划、（<input type="text" class="fill-blank-input" id="fb2-1">）、项目最后评审。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['完成收尾工作'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 检验项目成功与失败的标准包括是否在预算成本内完成项目、是否（<input type="text" class="fill-blank-input" id="fb3-1">）、是否达到项目客户的期望。</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['实现目标'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 有大量文档说明就能保证项目成功。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '错')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 项目验收过程是甲方对乙方交付的产品或服务进行验收检验，以保证它满足合同条款的要求。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '对')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 项目计划中确定的可交付成果已经出现，项目的目标已经成功实现时，可终止项目。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '对')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 项目没完成时，不能终止项目。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '错')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 一个项目的交付验收，意味着项目的结束。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 只有项目成功完成了，才说明项目结束了。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 项目经验教训总结是项目结束的一个重要输出。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '对')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+
+            <div class="question" id="tf8">
+                <div class="question-text">8. 当一个项目的目标已经实现，或者明确看到目标已经不可能实现时，项目就应该终止。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf8" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf8" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(8, '对')">检查答案</button>
+                <div class="result" id="result-tf8"></div>
+            </div>
+
+            <div class="question" id="tf9">
+                <div class="question-text">9. 项目的最后评审是不必要的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf9" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf9" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(9, '错')">检查答案</button>
+                <div class="result" id="result-tf9"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 客户接受项目的交付结果之前，项目经理应该做什么？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 检查交付结果的质量</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 修改合同款项</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 开项目完成的发票</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 给项目成员分配新的项目</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'A')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 不包括在项目验收过程中的是（）。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 完成项目收尾工作</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 项目成果评价</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 准备项目验收材料</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 项目总结</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'D')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 软件项目收尾工作应该做的事情不包括（）。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 人员角色选择</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 范围确认</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 质量验收和产品交付</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 费用决算和项目文档验收</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'A')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 下列除了哪项，其他都可以是项目终止的条件？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 项目计划中确定的可交付成果已经出现，项目的目标已经成功实现</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 项目已经不具备实用价值</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 项目由于各种原因而导致无限期拖长</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 项目需求发生了变化</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'D')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 下列不是项目成功与失败的标准是（）。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 是否实现目标</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 可交付成果如何</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 是否达到项目客户的期望</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 项目人数庞大</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'D')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 在项目的末期，与卖方的合同还有尚未解决的索赔，项目经理（）。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. 可能将合同收尾工作转交给其他人员</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. 通过审计来澄清索赔原因</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. 不能进行收尾工作</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. 进行合同收尾，合同收尾之后，可能采取法律行动</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'D')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+
+            <div class="question" id="mc7">
+                <div class="question-text">7. 项目接近结束的时候，如果客户希望对项目范围进行大的变更，项目经理应该如何做？（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc7" value="A"> A. 进行变更</label>
+                    <label class="option"><input type="radio" name="mc7" value="B"> B. 告诉客户变更带来的影响</label>
+                    <label class="option"><input type="radio" name="mc7" value="C"> C. 拒绝变更</label>
+                    <label class="option"><input type="radio" name="mc7" value="D"> D. 不理会</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(7, 'B')">检查答案</button>
+                <div class="result" id="result-mc7"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
 </body>
 </html>

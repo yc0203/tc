@@ -1,10 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十四、十六章 项目计划执行控制 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+        .no-questions {
+            background-color: #f0f8ff;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
 
+        <h1>《项目管理案例教程（第三版）》</h1>
+
+        <div class="section" id="chapter16">
+            <h2>第十六章 项目辅助计划执行控制 - 题库</h2>
+
+            <div class="section" id="fill-blank">
+                <h3>一、填空题</h3>
+
+                <div class="question" id="fb1">
+                    <div class="question-text">1. 项目周例会是一种（<input type="text" class="fill-blank-input" id="fb1-1">）沟通方式。</div>
+                    <button class="btn check-btn" onclick="checkFillBlank(1, ['正式'])">检查答案</button>
+                    <div class="result" id="result-fb1"></div>
+                </div>
+
+                <div class="question" id="fb2">
+                    <div class="question-text">2. 在马斯洛的需求层次理论中，最高层需求是（<input type="text" class="fill-blank-input" id="fb2-1">）。</div>
+                    <button class="btn check-btn" onclick="checkFillBlank(2, ['自我实现'])">检查答案</button>
+                    <div class="result" id="result-fb2"></div>
+                </div>
+            </div>
+
+            <div class="section" id="true-false">
+                <h3>二、判断题</h3>
+
+                <div class="question" id="tf1">
+                    <div class="question-text">1. 麦克勒格的X理论是参与理论。</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                        <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkTrueFalse(1, '错')">检查答案</button>
+                    <div class="result" id="result-tf1"></div>
+                </div>
+
+                <div class="question" id="tf2">
+                    <div class="question-text">2. 产品提交之后，如果甲方提出修改一些功能，对于这个维护需求，我们应该及时给予维护。</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                        <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkTrueFalse(2, '错')">检查答案</button>
+                    <div class="result" id="result-tf2"></div>
+                </div>
+
+                <div class="question" id="tf3">
+                    <div class="question-text">3. 风险管理是连续的过程。</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                        <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkTrueFalse(3, '对')">检查答案</button>
+                    <div class="result" id="result-tf3"></div>
+                </div>
+
+                <div class="question" id="tf4">
+                    <div class="question-text">4. 管理干系人参与和控制干系人参与都是干系人管理的任务。</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                        <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                    <div class="result" id="result-tf4"></div>
+                </div>
+
+                <div class="question" id="tf5">
+                    <div class="question-text">5. 敏捷生存期模型中的每天站立会议是很有效的一种沟通方式。</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                        <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                    <div class="result" id="result-tf5"></div>
+                </div>
+            </div>
+
+            <div class="section" id="multiple-choice">
+                <h3>三、选择题</h3>
+
+                <div class="question" id="mc1">
+                    <div class="question-text">1. 移情聆听需要理解他人的观点，为了展示移情聆听的技巧，项目经理应该（）</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="mc1" value="A"> A. 检查阐述的内容是否正确</label>
+                        <label class="option"><input type="radio" name="mc1" value="B"> B. 重复他人的内容，并且有感情色彩</label>
+                        <label class="option"><input type="radio" name="mc1" value="C"> C. 评估内容并提出建议</label>
+                        <label class="option"><input type="radio" name="mc1" value="D"> D. 重复</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkMultipleChoice(1, 'B')">检查答案</button>
+                    <div class="result" id="result-mc1"></div>
+                </div>
+
+                <div class="question" id="mc2">
+                    <div class="question-text">2. 对于冲突而言，下面哪个说法是正确的？（）</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="mc2" value="A"> A. 冲突是坏事情</label>
+                        <label class="option"><input type="radio" name="mc2" value="B"> B. 冲突常常是有利的事情</label>
+                        <label class="option"><input type="radio" name="mc2" value="C"> C. 冲突是由捣乱分子制造的</label>
+                        <label class="option"><input type="radio" name="mc2" value="D"> D. 应该避免冲突</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                    <div class="result" id="result-mc2"></div>
+                </div>
+
+                <div class="question" id="mc3">
+                    <div class="question-text">3. 项目培训特点不包括（）</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="mc3" value="A"> A. 时间短</label>
+                        <label class="option"><input type="radio" name="mc3" value="B"> B. 连续性</label>
+                        <label class="option"><input type="radio" name="mc3" value="C"> C. 针对性强</label>
+                        <label class="option"><input type="radio" name="mc3" value="D"> D. 见效快</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkMultipleChoice(3, 'B')">检查答案</button>
+                    <div class="result" id="result-mc3"></div>
+                </div>
+
+                <div class="question" id="mc4">
+                    <div class="question-text">4. “为什么大家不能都让一步解决这个问题呢？”，这是哪种冲突解决方法的体现？（）</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="mc4" value="A"> A. 解决问题（confrontation or problem solving）</label>
+                        <label class="option"><input type="radio" name="mc4" value="B"> B. 妥协（compromise）</label>
+                        <label class="option"><input type="radio" name="mc4" value="C"> C. 强迫方式（forcing mode）</label>
+                        <label class="option"><input type="radio" name="mc4" value="D"> D. 撤退（withdrawal）</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkMultipleChoice(4, 'B')">检查答案</button>
+                    <div class="result" id="result-mc4"></div>
+                </div>
+
+                <div class="question" id="mc5">
+                    <div class="question-text">5. 项目中的小组成员要同时离开公司，项目经理首先应该（）</div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="mc5" value="A"> A. 实施风险计划</label>
+                        <label class="option"><input type="radio" name="mc5" value="B"> B. 招募新员工</label>
+                        <label class="option"><input type="radio" name="mc5" value="C"> C. 与人力资源经理谈判</label>
+                        <label class="option"><input type="radio" name="mc5" value="D"> D. 修订计划</label>
+                    </div>
+                    <button class="btn check-btn" onclick="checkMultipleChoice(5, 'A')">检查答案</button>
+                    <div class="result" id="result-mc5"></div>
+                </div>
+            </div>
+        </div>
+
+         <div class="navigation">
+           <a href="../index.html" class="btn home-btn">返回主页</a>
+           <a href="chapter17.html" class="btn next-btn">下一章</a>
+         </div>
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
 </body>
 </html>

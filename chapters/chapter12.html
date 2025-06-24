@@ -1,10 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十二章 软件项目合同计划 - 题库</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .fill-blank-input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin: 0 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #1a252f;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .home-btn {
+            background-color: #3498db;
+        }
+        .home-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="navigation">
+            <a href="../index.html" class="btn home-btn">返回主页</a>
+            <div></div> <!-- 占位元素，用于右对齐 -->
+        </div>
 
+        <h1>《项目管理案例教程（第三版）》</h1>
+        <h2>第十二章 软件项目合同计划 - 题库</h2>
+
+        <div class="section" id="fill-blank">
+            <h3>一、填空题</h3>
+
+            <div class="question" id="fb1">
+                <div class="question-text">1. 买方风险最高的合同类型：（<input type="text" class="fill-blank-input" id="fb1-1">）（FFP（固定总价合同））</div>
+                <button class="btn check-btn" onclick="checkFillBlank(1, ['FFP', '固定总价合同', 'FFP（固定总价合同）'])">检查答案</button>
+                <div class="result" id="result-fb1"></div>
+            </div>
+
+            <div class="question" id="fb2">
+                <div class="question-text">2. 为执行项目而从项目团队外获取产品、服务或者成果的过程称为：（<input type="text" class="fill-blank-input" id="fb2-1">）</div>
+                <button class="btn check-btn" onclick="checkFillBlank(2, ['采购'])">检查答案</button>
+                <div class="result" id="result-fb2"></div>
+            </div>
+
+            <div class="question" id="fb3">
+                <div class="question-text">3. 合同双方当事人承担不同角色，这些角色包括：（<input type="text" class="fill-blank-input" id="fb3-1">）、（<input type="text" class="fill-blank-input" id="fb3-2">）</div>
+                <button class="btn check-btn" onclick="checkFillBlank(3, ['甲方', '乙方'])">检查答案</button>
+                <div class="result" id="result-fb3"></div>
+            </div>
+
+            <div class="question" id="fb4">
+                <div class="question-text">4. 一个 CPFF 合同类型，估计成本是 10 万元，固定费用是成本 1.5 万元，当成本提高至 20 万元时，合同金额为：（<input type="text" class="fill-blank-input" id="fb4-1">）（万）</div>
+                <button class="btn check-btn" onclick="checkFillBlank(4, ['21.5', '21.5万', '21.5万元'])">检查答案</button>
+                <div class="result" id="result-fb4"></div>
+            </div>
+
+            <div class="question" id="fb5">
+                <div class="question-text">5. 软件外包的基本步骤：（<input type="text" class="fill-blank-input" id="fb5-1">）、评估候选乙方的综合能力、确定承包商</div>
+                <button class="btn check-btn" onclick="checkFillBlank(5, ['竞标邀请'])">检查答案</button>
+                <div class="result" id="result-fb5"></div>
+            </div>
+
+            <div class="question" id="fb6">
+                <div class="question-text">6. 如果 CPPC 合同类型中成本百分比是 10%，估计成本是 10 万元，当实际成本是 20 万元时，合同金额应该为：（<input type="text" class="fill-blank-input" id="fb6-1">）（万）</div>
+                <button class="btn check-btn" onclick="checkFillBlank(6, ['22', '22万', '22万元'])">检查答案</button>
+                <div class="result" id="result-fb6"></div>
+            </div>
+
+            <div class="question" id="fb7">
+                <div class="question-text">7. 合同类型有：（<input type="text" class="fill-blank-input" id="fb7-1">）、固定价格类合同、单价类合同</div>
+                <button class="btn check-btn" onclick="checkFillBlank(7, ['成本补偿类合同'])">检查答案</button>
+                <div class="result" id="result-fb7"></div>
+            </div>
+        </div>
+
+        <div class="section" id="true-false">
+            <h3>二、判断题</h3>
+
+            <div class="question" id="tf1">
+                <div class="question-text">1. 合同类型有成本补偿合同、固定价格合同和单价合同。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf1" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf1" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(1, '对')">检查答案</button>
+                <div class="result" id="result-tf1"></div>
+            </div>
+
+            <div class="question" id="tf2">
+                <div class="question-text">2. 选择合同类型时，应该屏蔽工作成果、供应商等因素，使选择更加精确。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf2" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf2" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(2, '错')">检查答案</button>
+                <div class="result" id="result-tf2"></div>
+            </div>
+
+            <div class="question" id="tf3">
+                <div class="question-text">3. 软件项目外包的实质是软件开发过程从公司内部分或者全部延伸到公司外部的过程。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf3" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf3" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(3, '错')">检查答案</button>
+                <div class="result" id="result-tf3"></div>
+            </div>
+
+            <div class="question" id="tf4">
+                <div class="question-text">4. 招标书可以是合同计划的输出。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf4" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf4" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(4, '对')">检查答案</button>
+                <div class="result" id="result-tf4"></div>
+            </div>
+
+            <div class="question" id="tf5">
+                <div class="question-text">5. 对于甲方来说，风险最高的是 CPCC 合同类型，风险最低的是 FFP 合同类型，乙方则相反。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf5" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf5" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(5, '对')">检查答案</button>
+                <div class="result" id="result-tf5"></div>
+            </div>
+
+            <div class="question" id="tf6">
+                <div class="question-text">6. 如果一个项目的合同类型是固定价格（FFP），合同价格是 100 万元，实际花费是 160 万元，则项目结算金额为 160 万元。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf6" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf6" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(6, '错')">检查答案</button>
+                <div class="result" id="result-tf6"></div>
+            </div>
+
+            <div class="question" id="tf7">
+                <div class="question-text">7. 成本加奖金（CPIF）合同具有激励机制。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="tf7" value="对"> 对</label>
+                    <label class="option"><input type="radio" name="tf7" value="错"> 错</label>
+                </div>
+                <button class="btn check-btn" onclick="checkTrueFalse(7, '对')">检查答案</button>
+                <div class="result" id="result-tf7"></div>
+            </div>
+        </div>
+
+        <div class="section" id="multiple-choice">
+            <h3>三、选择题</h3>
+
+            <div class="question" id="mc1">
+                <div class="question-text">1. 下列与签署合同没有关系的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc1" value="A"> A. 设计模板</label>
+                    <label class="option"><input type="radio" name="mc1" value="B"> B. 协议附件</label>
+                    <label class="option"><input type="radio" name="mc1" value="C"> C. 招标文件</label>
+                    <label class="option"><input type="radio" name="mc1" value="D"> D. 评估标准</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(1, 'A')">检查答案</button>
+                <div class="result" id="result-mc1"></div>
+            </div>
+
+            <div class="question" id="mc2">
+                <div class="question-text">2. 可以在（）阶段采用制造 / 购买决策分析。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc2" value="A"> A. 卖方选择</label>
+                    <label class="option"><input type="radio" name="mc2" value="B"> B. 立项（采购计划编制）</label>
+                    <label class="option"><input type="radio" name="mc2" value="C"> C. 合同管理</label>
+                    <label class="option"><input type="radio" name="mc2" value="D"> D. 成本计划</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(2, 'B')">检查答案</button>
+                <div class="result" id="result-mc2"></div>
+            </div>
+
+            <div class="question" id="mc3">
+                <div class="question-text">3. 下列合同类型中，卖方承担的风险最大的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc3" value="A"> A. 成本加成百分比</label>
+                    <label class="option"><input type="radio" name="mc3" value="B"> B. 成本加固定费</label>
+                    <label class="option"><input type="radio" name="mc3" value="C"> C. 成本加奖金</label>
+                    <label class="option"><input type="radio" name="mc3" value="D"> D. 固定价格</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(3, 'D')">检查答案</button>
+                <div class="result" id="result-mc3"></div>
+            </div>
+
+            <div class="question" id="mc4">
+                <div class="question-text">4. 某项目采用成本加奖金的成本补偿类合同，当预算成本为 20 万元，利润 4 万元，且奖励分配为 80/20 时，如果实际成本降至 16 万元，则项目总价为（）。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc4" value="A"> A. 24 万元</label>
+                    <label class="option"><input type="radio" name="mc4" value="B"> B. 23.2 万元</label>
+                    <label class="option"><input type="radio" name="mc4" value="C"> C. 20.8 万元</label>
+                    <label class="option"><input type="radio" name="mc4" value="D"> D. 20 万元</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(4, 'C')">检查答案</button>
+                <div class="result" id="result-mc4"></div>
+            </div>
+
+            <div class="question" id="mc5">
+                <div class="question-text">5. 合同是需要靠（）约束的。</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc5" value="A"> A. 双方达成的共识</label>
+                    <label class="option"><input type="radio" name="mc5" value="B"> B. 道德</label>
+                    <label class="option"><input type="radio" name="mc5" value="C"> C. 责任</label>
+                    <label class="option"><input type="radio" name="mc5" value="D"> D. 相关法律法规</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(5, 'D')">检查答案</button>
+                <div class="result" id="result-mc5"></div>
+            </div>
+
+            <div class="question" id="mc6">
+                <div class="question-text">6. 下列合同类型中，买方承担的风险最大的是（）</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="mc6" value="A"> A. CPPC 成本加成本百分比</label>
+                    <label class="option"><input type="radio" name="mc6" value="B"> B. CPFF 成本加奖金</label>
+                    <label class="option"><input type="radio" name="mc6" value="C"> C. PFIF 固定成本加奖金</label>
+                    <label class="option"><input type="radio" name="mc6" value="D"> D. FFP 固定价格</label>
+                </div>
+                <button class="btn check-btn" onclick="checkMultipleChoice(6, 'A')">检查答案</button>
+                <div class="result" id="result-mc6"></div>
+            </div>
+        </div>
+
+
+         <div class="navigation">
+           <a href="../index.html" class="btn home-btn">返回主页</a>
+           <a href="chapter13.html" class="btn next-btn">下一章</a>
+         </div>
+</div>
+
+
+
+
+
+    </div>
+
+    <script>
+        // 检查填空题
+        function checkFillBlank(questionNum, correctAnswers) {
+            let allCorrect = true;
+            let userAnswers = [];
+
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const inputId = `fb${questionNum}-${i}`;
+                const userAnswer = document.getElementById(inputId).value.trim();
+                userAnswers.push(userAnswer);
+
+                if (userAnswer !== correctAnswers[i-1]) {
+                    allCorrect = false;
+                }
+            }
+
+            const resultDiv = document.getElementById(`result-fb${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                let feedback = '✗ 回答不正确。<br>你的答案：(' + userAnswers.join(')、(') + ')';
+                feedback += '<br>正确答案：(' + correctAnswers.join(')、(') + ')';
+                resultDiv.innerHTML = feedback;
+            }
+        }
+
+        // 检查判断题
+        function checkTrueFalse(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="tf${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-tf${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+
+        // 检查选择题
+        function checkMultipleChoice(questionNum, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="mc${questionNum}"]:checked`);
+            const resultDiv = document.getElementById(`result-mc${questionNum}`);
+            resultDiv.style.display = 'block';
+
+            if (!selectedOption) {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = '请选择一个答案';
+                return;
+            }
+
+            const userAnswer = selectedOption.value;
+
+            if (userAnswer === correctAnswer) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = '✓ 回答正确！';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `✗ 回答不正确。你的答案：${userAnswer}，正确答案：${correctAnswer}`;
+            }
+        }
+    </script>
 </body>
 </html>
